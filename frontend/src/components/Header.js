@@ -21,7 +21,7 @@ const Header = () => {
 			<Navbar bg='dark' variant='dark'>
 				<Container>
 					<LinkContainer to='/'>
-						<Navbar.Brand>Appliances4U</Navbar.Brand>
+						<Navbar.Brand>MY MEDIA</Navbar.Brand>
 					</LinkContainer>
 					<Nav className='ml-auto'>
 						<LinkContainer to='/cart'>
