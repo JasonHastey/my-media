@@ -7,15 +7,15 @@ import Header from './components/Header'
 import HomePage from './pages/HomePage.js'
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
-import ProfilePage from './pages/ProfilePage'
+import AccountPage from './pages/AccountPage'
 
 const App = () => {
 	return (
 		<Router>
 			<Header />
-			<main className='py-3 '>
-				<Container>
-					<Route path='/profile' component={ProfilePage} />
+			<main>
+				<Container fluid>
+					<Route path='/account' component={AccountPage} />
 					<Route path='/login' component={LoginPage} />
 					<Route path='/register' component={RegisterPage} />
 					<Route exact path='/' component={HomePage} />

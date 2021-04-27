@@ -1,54 +1,45 @@
-import mongoose from "mongoose";
-import path from "path";
-import express from "express";
-import dotenv from "dotenv";
-
+import path from 'path'
+import express from 'express'
+import dotenv from 'dotenv'
+import morgan from 'morgan'
+import connectDB from './database.js'
+import colors from 'colors'
 import userRoutes from './routes/userRoutes.js'
 
-const connectDB = async () => {
-  try {
-    const conn = await mongoose.connect(process.env.MONGO_URI, {
-      useUnifiedTopology: true,
-      useNewUrlParser: true,
-      useCreateIndex: true,
-    });
+dotenv.config()
 
-    console.log(`MongoDB Connected: ${conn.connection.host}`) 
-  } catch (error) {
-    console.error(`Error: ${error.message}`) 
-    process.exit(1);
-  }
-};
+connectDB()
 
-dotenv.config();
+const app = express()
 
-connectDB();
-
-const app = express();
-
-// if (process.env.NODE_ENV === "development") {
-//   app.use(morgan("dev"));
-// }
-
-app.use("/api/users", userRoutes);
-
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "/frontend/build")));
-
-  app.get("*", (req, res) =>
-    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"))
-  )
-} else {
-  app.get("/", (req, res) => {
-    res.send("API is running....");
-  });
+if (process.env.NODE_ENV === 'development') {
+	app.use(morgan('dev'))
 }
 
-const PORT = process.env.PORT || 5000;
+app.use(express.json())
+
+app.use('/api/users', userRoutes)
+
+const __dirname = path.resolve()
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
+
+if (process.env.NODE_ENV === 'production') {
+	app.use(express.static(path.join(__dirname, '/frontend/build')))
+
+	app.get('*', (req, res) =>
+		res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
+	)
+} else {
+	app.get('/', (req, res) => {
+		res.send('API is running....')
+	})
+}
+
+const PORT = process.env.PORT || 5000
 
 app.listen(
-  PORT,
-  console.log(
-    `Server running in ${process.env.NODE_ENV} mode on port ${PORT}`
-  )
-);
+	PORT,
+	console.log(
+		`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold
+	)
+)

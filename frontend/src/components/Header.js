@@ -24,15 +24,15 @@ const Header = () => {
 						<Navbar.Brand>MY MEDIA</Navbar.Brand>
 					</LinkContainer>
 					<Nav className='ml-auto'>
-						<LinkContainer to='/cart'>
+						<LinkContainer to='/favorites'>
 							<Nav.Link>
-								<i className='fas fa-shopping-cart' /> Cart
+								<i className='fas fa-shopping-cart' /> My Likes
 							</Nav.Link>
 						</LinkContainer>
 						{userInfo ? (
 							<NavDropDown title={userInfo.name} id='username'>
-								<LinkContainer to='profile'>
-									<NavDropDown.Item>Profile</NavDropDown.Item>
+								<LinkContainer to='/account'>
+									<NavDropDown.Item>Account</NavDropDown.Item>
 								</LinkContainer>
 								<NavDropDown.Item onClick={logoutHandler}>
 									Logout
