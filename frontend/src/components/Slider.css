@@ -1,5 +1,6 @@
 .slider {
-	height: 35rem;
+	height: 30rem;
+	max-height: 30rem;
 }
 
 .slider-main {
@@ -19,9 +20,69 @@
 }
 .slider-main_info > img {
 	height: 10rem;
+	margin-bottom: 0.5rem;
 }
 
 .slider-main_info-text {
 	color: white;
-	padding: 1rem;
+	padding: 2.5rem 1rem;
+}
+
+.slider-nav {
+	display: flex;
+	flex-direction: column;
+	overflow: scroll;
+	max-height: 100%;
+}
+
+.slider-nav > li {
+	display: flex;
+	flex-direction: row;
+	border: solid 1px black;
+	padding: 0.5rem;
+}
+
+.slider-nav > li > img {
+	height: 8rem;
+}
+
+.main {
+	height: 30rem;
+}
+
+.main-nav {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.main-nav:hover {
+	background-color: black;
+	color: white;
+}
+
+.main-center {
+	display: flex;
+	flex-direction: column;
+	padding: 0;
+	background-color: black;
+}
+.main-center_top {
+	height: 75%;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+}
+.main-center_bottom {
+	height: 25%;
+	display: flex;
+	padding: 0.5rem 1rem;
+	color: white;
+}
+.main-center_bottom > img {
+	height: 8rem;
+	transform: translateY(-2rem);
+	margin-right: 1rem;
+}
+.main-info_text {
 }
